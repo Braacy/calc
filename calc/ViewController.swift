@@ -92,7 +92,17 @@ class ViewController: UIViewController {
             label.text = "Error"
         }
         calculatorHistory.removeAll()
+    }
+    
+    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "CALCULATION_LIST",
+        let calculatorListVC = segue.destination as? CalculationListViewController else
+        { return }
+        calculatorListVC.result = label.text
     }
     
     @IBOutlet weak var label: UILabel!

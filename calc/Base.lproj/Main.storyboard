@@ -3,6 +3,7 @@
     <device id="retina6_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -236,6 +237,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Td4-iI-gmf">
+                                <rect key="frame" x="370.33333333333331" y="109" width="49.666666666666686" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="clock" catalog="system" symbolScale="large"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="uox-tn-gFD" kind="show" identifier="CALCULATION_LIST" id="QtE-fp-0oZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -247,6 +258,7 @@
                             <constraint firstItem="svf-6x-y6y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2nj-Me-mBK"/>
                             <constraint firstItem="AeG-SM-smD" firstAttribute="bottom" secondItem="6tr-FO-BgH" secondAttribute="top" id="5DZ-xY-T8I"/>
                             <constraint firstItem="AeG-SM-smD" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.13" id="5MI-rd-glY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Td4-iI-gmf" secondAttribute="trailing" constant="20" id="926-9i-OKo"/>
                             <constraint firstItem="zWj-5t-pwu" firstAttribute="bottom" secondItem="svf-6x-y6y" secondAttribute="top" id="9CY-IJ-2MY"/>
                             <constraint firstItem="b44-Vx-c0E" firstAttribute="bottom" secondItem="hXP-c5-DwW" secondAttribute="top" id="A2E-Ar-VbY"/>
                             <constraint firstItem="Mue-v1-b3D" firstAttribute="leading" secondItem="AeG-SM-smD" secondAttribute="trailing" id="Ae3-Hg-yKd"/>
@@ -310,6 +322,7 @@
                             <constraint firstItem="bF5-9q-lNU" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.25" id="sK2-jA-PEm"/>
                             <constraint firstItem="hoR-GG-bUt" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.13" id="sd2-pT-Xw3"/>
                             <constraint firstItem="0AG-dA-GKS" firstAttribute="bottom" secondItem="VeK-0z-ao2" secondAttribute="top" id="sip-gr-fxX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Td4-iI-gmf" secondAttribute="top" constant="15" id="wl9-es-7DR"/>
                             <constraint firstItem="VeK-0z-ao2" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.25" id="xJy-hu-bkV"/>
                             <constraint firstItem="b44-Vx-c0E" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.25" id="xNK-Tg-LaD"/>
                             <constraint firstItem="Mue-v1-b3D" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.13" id="y44-tB-Aec"/>
@@ -322,11 +335,62 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="qAG-Tb-cBo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="47" y="4"/>
         </scene>
+        <!--Calculation List View Controller-->
+        <scene sceneID="7qq-2Q-5RR">
+            <objects>
+                <viewController id="uox-tn-gFD" customClass="CalculationListViewController" customModule="calc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7ap-bN-LaV" customClass="Cal">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="884"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaT-ko-9Ao">
+                                <rect key="frame" x="220" y="442" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChJ-Ta-6aN">
+                                <rect key="frame" x="174.66666666666666" y="528.66666666666663" width="90.666666666666657" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Закрыть"/>
+                                <connections>
+                                    <segue destination="qAG-Tb-cBo" kind="unwind" unwindAction="unwindActionWithUnwindSegue:" id="JM9-eg-7U8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Результат" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jf-PJ-aM0">
+                                <rect key="frame" x="180.66666666666666" y="342" width="78.999999999999972" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LFo-oc-YGl"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jaT-ko-9Ao" firstAttribute="top" secondItem="8Jf-PJ-aM0" secondAttribute="bottom" constant="79" id="2K1-t8-TeG"/>
+                            <constraint firstItem="ChJ-Ta-6aN" firstAttribute="top" secondItem="jaT-ko-9Ao" secondAttribute="bottom" constant="86.666666666666686" id="2te-Ot-p41"/>
+                            <constraint firstItem="ChJ-Ta-6aN" firstAttribute="centerX" secondItem="7ap-bN-LaV" secondAttribute="centerX" id="IUd-W1-3Dc"/>
+                            <constraint firstItem="jaT-ko-9Ao" firstAttribute="centerY" secondItem="7ap-bN-LaV" secondAttribute="centerY" id="QHv-Ry-SSK"/>
+                            <constraint firstItem="8Jf-PJ-aM0" firstAttribute="centerX" secondItem="7ap-bN-LaV" secondAttribute="centerX" id="mid-b4-dpj"/>
+                            <constraint firstItem="jaT-ko-9Ao" firstAttribute="centerX" secondItem="7ap-bN-LaV" secondAttribute="centerX" id="tZA-6L-0R7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WIX-CI-MRH"/>
+                    <connections>
+                        <outlet property="calculationLabel" destination="jaT-ko-9Ao" id="XjC-vg-lWD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I8b-W4-hUA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915.00000000000011" y="3.7656903765690379"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="clock" catalog="system" width="128" height="123"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
