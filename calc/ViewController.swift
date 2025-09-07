@@ -95,9 +95,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
-        
     }
     
+    @IBAction func storyBtnPressed(_ sender: Any) {
+         let sb = UIStoryboard(name: "Main", bundle: nil)
+        let calculatorListVC = sb.instantiateViewController(withIdentifier: "CalculatorListVC")
+        if let vc = calculatorListVC as? CalculationListViewController {
+            vc.result = label.text
+        }
+        
+        show(calculatorListVC, sender: self)
+        
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "CALCULATION_LIST",
         let calculatorListVC = segue.destination as? CalculationListViewController else

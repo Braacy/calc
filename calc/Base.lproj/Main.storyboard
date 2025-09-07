@@ -244,7 +244,7 @@
                                     <imageReference key="image" image="clock" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="uox-tn-gFD" kind="show" identifier="CALCULATION_LIST" id="QtE-fp-0oZ"/>
+                                    <action selector="storyBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lkd-iW-WiI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -335,34 +335,33 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <exit id="qAG-Tb-cBo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="47" y="4"/>
         </scene>
         <!--Calculation List View Controller-->
         <scene sceneID="7qq-2Q-5RR">
             <objects>
-                <viewController id="uox-tn-gFD" customClass="CalculationListViewController" customModule="calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalculatorListVC" id="uox-tn-gFD" customClass="CalculationListViewController" customModule="calc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ap-bN-LaV" customClass="Cal">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="884"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaT-ko-9Ao">
-                                <rect key="frame" x="220" y="442" width="0.0" height="0.0"/>
+                                <rect key="frame" x="220" y="478" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChJ-Ta-6aN">
-                                <rect key="frame" x="174.66666666666666" y="528.66666666666663" width="90.666666666666657" height="35"/>
+                                <rect key="frame" x="174.66666666666666" y="564.66666666666663" width="90.666666666666657" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Закрыть"/>
                                 <connections>
-                                    <segue destination="qAG-Tb-cBo" kind="unwind" unwindAction="unwindActionWithUnwindSegue:" id="JM9-eg-7U8"/>
+                                    <action selector="dismissVC:" destination="uox-tn-gFD" eventType="touchUpInside" id="mcR-tG-Y6y"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Результат" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jf-PJ-aM0">
-                                <rect key="frame" x="180.66666666666666" y="342" width="78.999999999999972" height="21"/>
+                                <rect key="frame" x="180.66666666666666" y="378" width="78.999999999999972" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
