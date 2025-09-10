@@ -8,10 +8,10 @@
 import UIKit
 
 class CalculationListViewController: UIViewController {
+
+    var calculations: [(expressions: [CalculatorHistory], result: Double)] = []
     
-    var result: String?
-    
-    @IBOutlet weak var calculationLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -27,7 +27,11 @@ class CalculationListViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        calculationLabel.text = result
+ 
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,5 +42,15 @@ class CalculationListViewController: UIViewController {
     @IBAction func dismissVC(_ sender: Any) {
 //        dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension CalculationListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }

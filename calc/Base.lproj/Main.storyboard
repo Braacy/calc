@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S4I-7z-x3z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ovc-aP-co7">
     <device id="retina6_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
@@ -325,74 +325,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938.18181818181824" y="3.7656903765690379"/>
+            <point key="canvasLocation" x="1830.0000000000002" y="3.7656903765690379"/>
         </scene>
-        <!-- История-->
+        <!--Прошлые вычисления-->
         <scene sceneID="7qq-2Q-5RR">
             <objects>
-                <viewController storyboardIdentifier="CalculatorListVC" id="uox-tn-gFD" customClass="CalculationListViewController" customModule="calc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalculatorListVC" modalPresentationStyle="fullScreen" id="uox-tn-gFD" customClass="CalculationListViewController" customModule="calc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ap-bN-LaV" customClass="Cal">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaT-ko-9Ao">
-                                <rect key="frame" x="220" y="478" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChJ-Ta-6aN">
-                                <rect key="frame" x="174.66666666666666" y="564.66666666666663" width="90.666666666666657" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Закрыть"/>
-                                <connections>
-                                    <action selector="dismissVC:" destination="uox-tn-gFD" eventType="touchUpInside" id="mcR-tG-Y6y"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Результат" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jf-PJ-aM0">
-                                <rect key="frame" x="180.66666666666666" y="378" width="78.999999999999972" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VAw-qN-XgL">
+                                <rect key="frame" x="0.0" y="124" width="440" height="832"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LFo-oc-YGl"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jaT-ko-9Ao" firstAttribute="top" secondItem="8Jf-PJ-aM0" secondAttribute="bottom" constant="79" id="2K1-t8-TeG"/>
-                            <constraint firstItem="ChJ-Ta-6aN" firstAttribute="top" secondItem="jaT-ko-9Ao" secondAttribute="bottom" constant="86.666666666666686" id="2te-Ot-p41"/>
-                            <constraint firstItem="ChJ-Ta-6aN" firstAttribute="centerX" secondItem="7ap-bN-LaV" secondAttribute="centerX" id="IUd-W1-3Dc"/>
-                            <constraint firstItem="jaT-ko-9Ao" firstAttribute="centerY" secondItem="7ap-bN-LaV" secondAttribute="centerY" id="QHv-Ry-SSK"/>
-                            <constraint firstItem="8Jf-PJ-aM0" firstAttribute="centerX" secondItem="7ap-bN-LaV" secondAttribute="centerX" id="mid-b4-dpj"/>
-                            <constraint firstItem="jaT-ko-9Ao" firstAttribute="centerX" secondItem="7ap-bN-LaV" secondAttribute="centerX" id="tZA-6L-0R7"/>
+                            <constraint firstItem="VAw-qN-XgL" firstAttribute="trailing" secondItem="LFo-oc-YGl" secondAttribute="trailing" id="9SM-F4-gZa"/>
+                            <constraint firstItem="VAw-qN-XgL" firstAttribute="leading" secondItem="LFo-oc-YGl" secondAttribute="leading" id="D0y-0b-I7I"/>
+                            <constraint firstAttribute="bottom" secondItem="VAw-qN-XgL" secondAttribute="bottom" id="TCm-it-CvP"/>
+                            <constraint firstItem="VAw-qN-XgL" firstAttribute="top" secondItem="LFo-oc-YGl" secondAttribute="top" id="gC6-GL-i3I"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title=" История" id="WIX-CI-MRH"/>
-                    <connections>
-                        <outlet property="calculationLabel" destination="jaT-ko-9Ao" id="XjC-vg-lWD"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Прошлые вычисления" id="WIX-CI-MRH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8b-W4-hUA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806.818181818182" y="3.7656903765690379"/>
+            <point key="canvasLocation" x="2811.818181818182" y="3.7656903765690379"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="aJd-BT-vHM">
+        <scene sceneID="ypc-Jx-cQy">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S4I-7z-x3z" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ovc-aP-co7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uT9-jo-3Za">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Fx-yz-vm8">
                         <rect key="frame" x="0.0" y="124" width="440" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uic-o9-FjE"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EOw-Ku-ic9"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8sf-xG-apk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s1h-wj-nAl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46.363636363636367" y="3.7656903765690379"/>
+            <point key="canvasLocation" x="938.18181818181824" y="3.7656903765690379"/>
         </scene>
     </scenes>
     <resources>

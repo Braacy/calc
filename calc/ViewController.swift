@@ -41,6 +41,9 @@ enum CalculatorHistory {
 
 class ViewController: UIViewController {
     
+    var calculatorHistory: [CalculatorHistory] = []
+    var calculations: [(expressions: [CalculatorHistory], result: Double)] = []
+    
     @IBAction func buttonPressed(_ sender: UIButton) {
         guard let buttonText = sender.titleLabel?.text else { return }
         
@@ -57,20 +60,20 @@ class ViewController: UIViewController {
     
     @IBAction func operationbuttonPressed(_ sender: UIButton) {
         guard
-        let buttonText = sender.titleLabel?.text,
-        let buttonOperation = Operation(rawValue: buttonText)
+            let buttonText = sender.titleLabel?.text,
+            let buttonOperation = Operation(rawValue: buttonText)
         else { return }
         
         guard
-        let labelText = label.text,
-        let labelNumber = numberFormatter.number(from: labelText)?.doubleValue
+            let labelText = label.text,
+            let labelNumber = numberFormatter.number(from: labelText)?.doubleValue
         else {return}
         
         calculatorHistory.append(.number(labelNumber))
         calculatorHistory.append(.operation(buttonOperation))
         
         resetTextLabel()
-        }
+    }
     
     @IBAction func clearbuttonPressed() {
         calculatorHistory.removeAll()
@@ -80,44 +83,38 @@ class ViewController: UIViewController {
     
     @IBAction func calculatebuttonPressed() {
         guard
-        let labelText = label.text,
-        let labelNumber = numberFormatter.number(from: labelText)?.doubleValue
+            let labelText = label.text,
+            let labelNumber = numberFormatter.number(from: labelText)?.doubleValue
         else {return}
         
         calculatorHistory.append(.number(labelNumber))
         do {
             let result = try calculate()
             label.text = numberFormatter.string(from: NSNumber(value: result))
+            calculations.append((calculatorHistory, result))
+            
         } catch {
             label.text = "Error"
         }
+        
         calculatorHistory.removeAll()
     }
     
-//    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
-//    }
+    //    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
+    //    }
     
     @IBAction func storyBtnPressed(_ sender: Any) {
-         let sb = UIStoryboard(name: "Main", bundle: nil)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
         let calculatorListVC = sb.instantiateViewController(withIdentifier: "CalculatorListVC")
         if let vc = calculatorListVC as? CalculationListViewController {
-            vc.result = label.text
+            vc.calculations = calculations
         }
-        
         navigationController?.pushViewController(calculatorListVC, animated: true)
-        
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard segue.identifier == "CALCULATION_LIST",
-//        let calculatorListVC = segue.destination as? CalculationListViewController else
-//        { return }
-//        calculatorListVC.result = label.text
-//    }
-    
+   
     @IBOutlet weak var label: UILabel!
     
-    var calculatorHistory: [CalculatorHistory] = []
+    
     
     lazy var numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -132,7 +129,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-     resetTextLabel()
+        resetTextLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,8 +144,8 @@ class ViewController: UIViewController {
         
         for index in stride(from: 1, to: calculatorHistory.count - 1, by: 2) {
             guard
-            case .operation(let operation) = calculatorHistory[index],
-            case .number(let number) = calculatorHistory[index + 1]
+                case .operation(let operation) = calculatorHistory[index],
+                case .number(let number) = calculatorHistory[index + 1]
             else { break }
             
             currentResult = try operation.calculate(currentResult, number)
@@ -161,6 +158,5 @@ class ViewController: UIViewController {
     func resetTextLabel() {
         label.text = "0"
     }
-
+    
 }
-
