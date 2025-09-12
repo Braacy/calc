@@ -9,7 +9,7 @@ import UIKit
 
 class CalculationListViewController: UIViewController {
 
-    var calculations: [(expressions: [CalculatorHistory], result: Double)] = []
+    var calculations: [Calculation] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -48,7 +48,7 @@ class CalculationListViewController: UIViewController {
     }
     
     private func expressionToString(_ expression: [CalculatorHistory]) -> String {
-        var result = ""
+        var result = " "
         
         for operand in expression {
             switch operand {
