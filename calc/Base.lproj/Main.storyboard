@@ -350,6 +350,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Прошлые вычисления" id="WIX-CI-MRH"/>
+                    <connections>
+                        <outlet property="tableView" destination="VAw-qN-XgL" id="nor-wn-bGF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8b-W4-hUA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -90,6 +90,7 @@ class ViewController: UIViewController {
         calculatorHistory.append(.number(labelNumber))
         do {
             let result = try calculate()
+            
             label.text = numberFormatter.string(from: NSNumber(value: result))
             calculations.append((calculatorHistory, result))
             
