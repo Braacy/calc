@@ -16,6 +16,7 @@ enum Operation: String {
     case subtract = "-"
     case multiply = "X"
     case divide = "/"
+    case pi = "Pi"
     
     func calculate(_ a: Double, _ b: Double) throws -> Double {
         switch self {
@@ -30,6 +31,8 @@ enum Operation: String {
                 throw CalculatorError.dividedByZero
             }
             return a / b
+        case .pi :
+            return Double.pi
         }
     }
 }
