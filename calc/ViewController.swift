@@ -47,6 +47,17 @@ class ViewController: UIViewController {
     var calculatorHistory: [CalculatorHistory] = []
     var calculations: [Calculation] = []
     
+    private let alertView: AlertView = {
+        let screenBounds = UIScreen.main.bounds
+        let alertHeight: CGFloat = 100
+        let alertWidth: CGFloat = screenBounds.width - 40
+        let x: CGFloat = screenBounds.width / 2 - alertWidth / 2
+        let y: CGFloat = screenBounds.height / 2 - alertHeight / 2
+        let alertFrame: CGRect = CGRect(x: x, y: y, width: alertWidth, height: alertHeight)
+        let alertView = AlertView(frame: alertFrame)
+        return alertView
+    }()
+    
     let calculationHistoryStorage = CalculationHistoryStorage()
     
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -60,6 +71,10 @@ class ViewController: UIViewController {
             label.text = buttonText
         } else {
             label.text?.append(buttonText)
+        }
+        
+        if label.text == "3,141592" {
+           animateAlert()
         }
     }
     
@@ -82,8 +97,8 @@ class ViewController: UIViewController {
     
     @IBAction func clearbuttonPressed() {
         calculatorHistory.removeAll()
-        
         resetTextLabel()
+        
     }
     
     @IBAction func calculatebuttonPressed() {
@@ -140,6 +155,10 @@ class ViewController: UIViewController {
         resetTextLabel()
         
         calculations = calculationHistoryStorage.loadHistory()
+        
+        view.addSubview(alertView)
+        alertView.alpha = 0
+        alertView.alertText = "Вы нашли пасхалку!"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -167,6 +186,12 @@ class ViewController: UIViewController {
     
     func resetTextLabel() {
         label.text = "0"
+    }
+    
+    func animateAlert() {
+        UIView.animate(withDuration: 0.5) {
+            self.alertView.alpha = 1
+        }
     }
     
 }
