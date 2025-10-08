@@ -76,6 +76,8 @@ class ViewController: UIViewController {
         if label.text == "3,141592" {
            animateAlert()
         }
+        
+        sender.animateTap()
     }
     
     @IBAction func operationbuttonPressed(_ sender: UIButton) {
@@ -118,9 +120,13 @@ class ViewController: UIViewController {
             
         } catch {
             label.text = "Error"
+            label.shake()
+            animateBackground()
         }
         
         calculatorHistory.removeAll()
+        
+
     }
     
     //    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
@@ -200,4 +206,46 @@ class ViewController: UIViewController {
         }
     }
     
+    func animateBackground() {
+        let animation = CABasicAnimation(keyPath: "backgroundColor")
+        animation.duration = 1
+        animation.fromValue = UIColor.white.cgColor
+        animation.toValue = UIColor.red.cgColor
+        
+        view.layer.add(animation, forKey: "backgroundColor")
+        view.layer.backgroundColor = UIColor.red.cgColor
+    }
+}
+
+extension UILabel {
+    
+    func shake() {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.05
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: center.x - 5, y: center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: center.x + 5, y: center.y))
+        
+        layer.add(animation, forKey: "position")
+    }
+}
+
+extension UIButton {
+    
+    func animateTap() {
+        let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        scaleAnimation.values = [1, 0.95, 1]
+        scaleAnimation.keyTimes = [0, 0.2, 1]
+        
+        let opacityAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        opacityAnimation.values = [0.4, 0.8, 1.0]
+        opacityAnimation.keyTimes = [0, 0.2, 1]
+        
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.animations = [scaleAnimation, opacityAnimation]
+        groupAnimation.duration = 1.5
+        
+        layer.add(groupAnimation, forKey: "groupAnimation")
+    }
 }
